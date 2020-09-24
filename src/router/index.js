@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
+
 import common from './common/index.js'
 
 Vue.use(Router)
@@ -18,11 +19,14 @@ export function resetRouter () {
   router.matcher = newRouter.matcher // reset router
 }
 
-console.log(router, 'router-'.repeat(10))
 
 // 路由守卫
 router.beforeEach((to, from, next) => {
-  
+  if(to.path == '/'){
+    return next({ path: '/mei' })
+  }else{
+    return next()
+  }
 })
 
 export default router
