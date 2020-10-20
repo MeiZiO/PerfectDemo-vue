@@ -32,9 +32,38 @@
     }
   }
   .codeContainer {
-    margin: 0 auto;
+    margin: 0 20px;
     width: 90%;
     height: 100%;
+  }
+  .drawerContent{
+    display: flex;
+    height: 100%;
+    div:nth-child(1) {
+      flex: 3;
+    }
+    div:nth-child(2) {
+      flex: 20
+    }
+    .fileBtn{
+      width: 180px;
+      font-size: 14px;
+      height: 32px;
+      background-color: #1E1E1E !important;
+      padding: 2px 2px;
+      color: #e0e0e0;
+      border-color: #000;
+    }
+    .fileBtn:hover{
+      color: #fff;
+      border-color: #fff;
+      background-color: #000!important;
+    }
+    .fileBtnActive{
+      color: #fff;
+      border-color: #000;
+      background-color: #000 !important;
+    }
   }
 }
 </style>
@@ -42,6 +71,9 @@
 .pageTitle {
  .el-drawer {
     background-color: #1E1E1E!important;
+  }
+  .el-step__icon{
+    background: #1E1E1E!important;
   }
 }
 </style>
@@ -51,17 +83,17 @@
       <el-col :span="21" class="leftContain">
         <el-row>
           <el-col>
-            我是标题 <span>[所属类型]</span>
+            {{name}} <span>[{{type}}]</span>
           </el-col>
-           <el-col>
-            我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容
+          <el-col>
+            {{mark}}
           </el-col>
         </el-row>
       </el-col>
       <el-col :span="3" class="rightContain">
-        <el-row><el-button type="primary" plain icon="el-icon-arrow-up"></el-button></el-row>
-        <el-row><el-button type="primary" round @click="showCode">查看源码</el-button></el-row>
-        <el-row><el-button type="primary" plain icon="el-icon-arrow-down"></el-button></el-row>
+        <el-row><el-button type="success" plain icon="el-icon-arrow-up"></el-button></el-row>
+        <el-row><el-button type="success" round @click="showCode">查看源码</el-button></el-row>
+        <el-row><el-button type="success" plain icon="el-icon-arrow-down"></el-button></el-row>
       </el-col>
     </el-row>
     <el-drawer
@@ -69,7 +101,16 @@
       direction="btt"
       size="80%">
       <div class="codeContainer">
-        <monaco :code="code"></monaco>
+        <div class="drawerContent">
+          <div>
+            <p v-for="(item, index) in files" :key="index">
+              <el-button icon="el-icon-document" plain :class="['fileBtn', active==index?'fileBtnActive':'']" @click="handleFlie(index)">{{item}}</el-button>
+            </p>
+          </div>
+          <div>
+            <monaco :code="code" :options="options" @mounted="onMounted"></monaco>
+          </div>
+        </div>
       </div>
     </el-drawer>
   </el-card>
@@ -77,70 +118,36 @@
 
 <script>
   export default {
+    props: {
+      route: {     // 集群数组 数据格式[{集群信息，partitions:[]}]
+        type: Object,
+        default() {
+          return {}
+        }
+      },
+    },
+    computed: {
+      name () {
+        return this.$store.state.pageTitle.name
+      },
+      type () {
+        return this.$store.state.pageTitle.type
+      },
+      mark () {
+        return this.$store.state.pageTitle.mark
+      }
+    },
     data () {
       return {
+        active: 0,
+        files: [],
         drawer: false,
-        code: `2020年9月16日 星期三
-一、今日工作：
-中航信
-1, 优化上下线按钮权限控制逻辑(100%)
-2,填充上下线编辑功能内容(70%)
-3,参与会议 了解服务发布部分的新需求(100%)
-4,调研 服务发布部分新需求的实现方案(100%)
-
-城商行
-1,调整 镜像下载时的提示方式(100%)
-
-二、明日工作
-中航信开发
-
-三、遇到问题和需提供帮助
-无2020年9月16日 星期三
-一、今日工作：
-中航信
-1, 优化上下线按钮权限控制逻辑(100%)
-2,填充上下线编辑功能内容(70%)
-3,参与会议 了解服务发布部分的新需求(100%)
-4,调研 服务发布部分新需求的实现方案(100%)
-
-城商行
-1,调整 镜像下载时的提示方式(100%)
-
-二、明日工作
-中航信开发
-
-三、遇到问题和需提供帮助
-无2020年9月16日 星期三
-一、今日工作：
-中航信
-1, 优化上下线按钮权限控制逻辑(100%)
-2,填充上下线编辑功能内容(70%)
-3,参与会议 了解服务发布部分的新需求(100%)
-4,调研 服务发布部分新需求的实现方案(100%)
-
-城商行
-1,调整 镜像下载时的提示方式(100%)
-
-二、明日工作
-中航信开发
-
-三、遇到问题和需提供帮助
-无2020年9月16日 星期三
-一、今日工作：
-中航信
-1, 优化上下线按钮权限控制逻辑(100%)
-2,填充上下线编辑功能内容(70%)
-3,参与会议 了解服务发布部分的新需求(100%)
-4,调研 服务发布部分新需求的实现方案(100%)
-
-城商行
-1,调整 镜像下载时的提示方式(100%)
-
-二、明日工作
-中航信开发
-
-三、遇到问题和需提供帮助
-无`
+        codes: [],
+        code: '',
+        options: {
+          readOnly: true
+        },
+        editor: null
       }
     },
     watch: {
@@ -153,8 +160,33 @@
       }
     },
     methods:{
+      onMounted(editor) {
+        this.editor = editor;
+      },
+      handleFlie (index) {
+        this.active=index
+        this.handleCode()
+      },
+      handleCode () {
+        let file = require('../../codes' + this.codes[this.active])
+        this.code = file.code
+        if (this.editor) {
+          this.editor.setValue(this.code)
+        }
+      },
       showCode () {
-        this.drawer = true;
+        if ( this.route.meta.files &&  this.route.meta.files.length >0) {
+          this.files = this.route.meta.files
+          this.codes = this.route.meta.codes
+          this.active = 0
+          this.drawer = true;
+          this.handleCode()
+        }else{
+          this.$message({
+            type: 'warning',
+            message: '暂无代码信息'
+          })
+        }
       }
     }
   }
