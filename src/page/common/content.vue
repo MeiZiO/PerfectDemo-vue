@@ -86,7 +86,7 @@ body, html {
                 <i class="el-icon-menu"></i>
                   <span slot="title">{{item1.name}}</span>
               </el-menu-item>
-              <el-submenu v-else index="index1">
+              <el-submenu v-else :index="'' + index1">
                 <template slot="title">
                   <span slot="title"></span>
                   <span slot="title">{{item1.name}}</span>
