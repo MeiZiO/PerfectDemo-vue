@@ -1,13 +1,21 @@
-import content from '@/page/common/content.vue'
-import demo from '@/page/common/demo/index.vue'
+import content from '../../page/common/content.vue'
+import demo from '../../page/common/demo/index.vue'
+import methodsArr from '../methods/index.js'
+import basicModule from '../basicModule/index.js'
 
-export default [
+let routerArr = [
   {
     path: '/mei',
     component: content,
     children: [
+      ...methodsArr,
+      ...basicModule,
       {
         path: 'demo',
+        meta: {
+          files: ['index.vue', 'test'],
+          codes: ['page/demo/index.vue']
+        },
         component: demo
       },
       {
@@ -17,3 +25,5 @@ export default [
     ]
   },
 ]
+
+export default routerArr
