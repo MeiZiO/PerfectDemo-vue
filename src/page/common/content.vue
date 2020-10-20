@@ -100,8 +100,8 @@ body, html {
         </el-aside>
         </div>
         <el-container>
-          <el-footer style="height:140px;padding:0;">
-            <pageTitle></pageTitle>
+          <el-footer style="height:160px;padding:0;">
+            <pageTitle :route="$route"></pageTitle>
           </el-footer>
           <el-main>
             <transition enter-active-class="fadeInUp" mode="out-in">
