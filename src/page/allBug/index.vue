@@ -8,8 +8,11 @@
     padding: 30px;
     font-size: 20px;
 }
+.showBugsCardParent{
+    flex-wrap: wrap;
+}
 .showBugsCard{
-    width: 30%;
+    margin-top: 20px;
 }
 .showBugsTitle{
     font-weight: bold;
@@ -18,14 +21,16 @@
 }
 .showBugsValue{
     color: #6d6d6d;
+    text-align: left;
+    padding-left: 50px;
 }
 </style>
 <template>
     <div>
         <el-card class="searchCard">
-            <el-row>
+            <el-row :gutter="10">
                 <el-col :span="4">
-                    <el-select v-model="searchType" clearable @change="handleSearch" filterable>
+                    <el-select v-model="searchType" clearable @change="handleSearch" filterable placeholder="可选类别">
                         <el-option 
                             v-for="(item, index) in typeList"
                             :key="index"
@@ -44,23 +49,28 @@
             <div class="noInfoText">暂无相符合的信息</div>
         </div>
         <div v-else>
-            <el-card 
-                v-for="(item, index) in showBugs"
-                :key="index"
-                shadow="always" class="showBugsCard">
-                <el-collapse>
-                    <el-collapse-item :title="item.name">
-                        <div v-if="item.detail">
-                            <div class="showBugsTitle">现象描述:</div>
-                            <div class="showBugsValue">{{item.detail}}</div>
-                        </div>
-                        <div>
-                            <div class="showBugsTitle">导致原因:</div>
-                            <div class="showBugsValue">{{item.reason}}</div>
-                        </div>
-                    </el-collapse-item>
-                </el-collapse>
-            </el-card>
+            <el-row :gutter="20" class="showBugsCardParent" type="flex">
+               <el-col :span="8"
+                    v-for="(item, index) in showBugs"
+                    :key="index"
+                    shadow="always" class="showBugsCard">
+                    <el-card>
+                        <el-collapse>
+                            <el-collapse-item :title="item.name">
+                                <div v-if="item.detail">
+                                    <div class="showBugsTitle">现象描述:</div>
+                                    <div class="showBugsValue" v-html="item.detail"></div>
+                                </div>
+                                <div>
+                                    <div class="showBugsTitle">导致原因:</div>
+                                    <div class="showBugsValue" v-html="item.reason"></div>
+                                </div>
+                            </el-collapse-item>
+                        </el-collapse>
+                    </el-card>
+                </el-col> 
+            </el-row>
+
         </div>
     </div>
 </template>
@@ -83,7 +93,7 @@ export default {
     methods:{
         handleSearch () {
             console.log('执行筛选')
-            let arr = this.bugInfo.filter(item => item.name.includes(this.searchKey) && item.type.filter(item => item == this.searchType).length > 0)
+            let arr = this.bugInfo.filter(item => item.name.includes(this.searchKey) && (this.searchType?item.type.filter(item => item == this.searchType).length > 0:true))
             this.showBugs = deepCopy(arr)
         }
     },
