@@ -24,7 +24,18 @@
     <div>
         <el-card class="searchCard">
             <el-row>
-                <el-col :span="18">
+                <el-col :span="4">
+                    <el-select v-model="searchType" clearable @change="handleSearch" filterable>
+                        <el-option 
+                            v-for="(item, index) in typeList"
+                            :key="index"
+                            :value="item"
+                            :label="item"
+                            >
+                        </el-option>
+                    </el-select>
+                </el-col>
+                <el-col :span="14">
                     <el-input v-model="searchKey" placeholder="请输入想要搜索的内容" @keyup.native="handleSearch" clearable></el-input>
                 </el-col>
             </el-row>
@@ -55,20 +66,24 @@
 </template>
 
 <script>
-import bugInfo from './bugInfo.js'
+import bugInfo from './info/index.js'
+import typeList from './info/typeList.js'
 import {deepCopy} from '/src/components/deeoCopy'
 
 export default {
     data () {
         return {
+            typeList,
             bugInfo,
             searchKey: '',
+            searchType: '',
             showBugs: []
         }
     },
     methods:{
         handleSearch () {
-            let arr = this.bugInfo.filter(item => item.name.includes(this.searchKey))
+            console.log('执行筛选')
+            let arr = this.bugInfo.filter(item => item.name.includes(this.searchKey) && item.type.filter(item => item == this.searchType).length > 0)
             this.showBugs = deepCopy(arr)
         }
     },
