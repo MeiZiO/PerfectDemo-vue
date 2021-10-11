@@ -83,7 +83,7 @@ body, html {
             router>
             <div v-for="(item1, index1) in menuData" :key="index1">
               <el-menu-item :index="item1.path" v-if="item1.children.length == 0">
-                <i class="el-icon-menu"></i>
+                <!-- <i class="el-icon-menu"></i> -->
                   <span slot="title">{{item1.name}}</span>
               </el-menu-item>
               <el-submenu v-else :index="'' + index1">
