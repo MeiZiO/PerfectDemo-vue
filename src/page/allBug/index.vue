@@ -74,6 +74,9 @@ export default {
     },
     mounted() {
         this.showBugs = deepCopy(this.bugInfo)
+        this.$store.commit('SET_NAME', '异常汇总')
+        this.$store.commit('SET_TYPE', '异常')
+        this.$store.commit('SET_MARK', '展示所有开发过程中遇到的异常,异常标题支持模糊搜索')
     },
 }
 </script>
