@@ -13,6 +13,15 @@ let menuData = [
     ]
   },
   {
+    name: 'js简单功能',
+    children: [
+      {
+        name: '点击复制',
+        path: '/jsMethods/clickCopy',
+      }
+    ]
+  },
+  {
     name: '对象数组',
     children: [
       {
@@ -20,6 +29,11 @@ let menuData = [
         path: '/objectArr/uniq',
       }
     ]
+  },
+  {
+    name: '异常汇总',
+    path: '/allBug',
+    children: []
   },
   {
     name: '模板示例',

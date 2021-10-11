@@ -1,7 +1,9 @@
-import content from '../../page/common/content.vue'
-import demo from '../../page/common/demo/index.vue'
+import content from '../../common/content.vue'
+import demo from '../../common/demo/index.vue'
 import methodsArr from '../methods/index.js'
 import basicModule from '../basicModule/index.js'
+import jsMethods from '../jsMethods/index.js'
+import allBug from '../allBug/index.js'
 
 let routerArr = [
   {
@@ -10,6 +12,8 @@ let routerArr = [
     children: [
       ...methodsArr,
       ...basicModule,
+      ...jsMethods,
+      ...allBug,
       {
         path: 'demo',
         meta: {
