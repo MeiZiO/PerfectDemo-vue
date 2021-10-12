@@ -1,7 +1,12 @@
 <style lang="less" scoped>
+.mianArea{
+    width: calc(100vw - 260px);
+    height: calc(100vh - 50px);
+    overflow-y: scroll;
+}
 .searchCard{
     margin: 0 0 10px 0;
-    padding: 6px;
+    padding: 0 6px;
 }
 .noInfoText{
     color: #f12947;
@@ -12,7 +17,7 @@
     flex-wrap: wrap;
 }
 .showBugsCard{
-    margin-top: 20px;
+    margin-bottom: 20px;
 }
 .showBugsTitle{
     font-weight: bold;
@@ -27,7 +32,7 @@
 </style>
 <template>
     <div>
-        <el-card class="searchCard">
+        <!-- <el-card class="searchCard"> -->
             <el-row :gutter="10">
                 <el-col :span="4">
                     <el-select v-model="searchType" clearable @change="handleSearch" filterable placeholder="可选类别">
@@ -44,11 +49,11 @@
                     <el-input v-model="searchKey" placeholder="请输入想要搜索的内容" @keyup.native="handleSearch" clearable></el-input>
                 </el-col>
             </el-row>
-        </el-card>
+        <!-- </el-card> -->
         <div v-if="showBugs.length == 0">
             <div class="noInfoText">暂无相符合的信息</div>
         </div>
-        <div v-else>
+        <div v-else  class="mianArea">
             <el-row :gutter="20" class="showBugsCardParent" type="flex">
                <el-col :span="8"
                     v-for="(item, index) in showBugs"
@@ -70,7 +75,6 @@
                     </el-card>
                 </el-col> 
             </el-row>
-
         </div>
     </div>
 </template>
@@ -101,7 +105,7 @@ export default {
         this.showBugs = deepCopy(this.bugInfo)
         this.$store.commit('SET_NAME', '异常汇总')
         this.$store.commit('SET_TYPE', '异常')
-        this.$store.commit('SET_MARK', '展示所有开发过程中遇到的异常,异常标题支持模糊搜索')
+        this.$store.commit('SET_MARK', '展示开发过程中遇到的异常,标题支持模糊搜索')
     },
 }
 </script>
