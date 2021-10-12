@@ -6,6 +6,9 @@ body, html {
   height: 32px!important
 }
 .home {
+  height: calc(100vh);
+  overflow-y: hidden;
+
   .el-header{
     padding: 0;
     height: 32px!important;
@@ -18,14 +21,15 @@ body, html {
     height: calc(100vh - 32px);
   }
   .aside_container {
-    width: 200px;
-    overflow: hidden;
+    width: 220px!important;
+    overflow: scroll;
     height: calc(100vh - 32px);
   }
 }
 </style>
 <style lang="less">
 .home{
+
   .header_container {
     .el-menu--horizontal>.el-submenu .el-submenu__title {
       height: 32px!important;
@@ -75,7 +79,7 @@ body, html {
       </el-header>
       <el-container>
         <div class="aside_container">
-          <el-aside width="220px">
+          <el-aside>
           <el-menu
             background-color="#FFF9FB"
             class="el-menu-vertical-demo aside_menu"

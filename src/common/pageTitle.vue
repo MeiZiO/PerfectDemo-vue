@@ -168,7 +168,7 @@
         this.handleCode()
       },
       handleCode () {
-        let file = require('../../codes' + this.codes[this.active])
+        let file = require('/src/codes' + this.codes[this.active])
         this.code = file.code
         if (this.editor) {
           this.editor.setValue(this.code)
