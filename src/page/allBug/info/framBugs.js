@@ -1,6 +1,20 @@
 /* eslint-disable */
 let data = [
   {
+    name: '视图数据与实际数据不一致',
+    type: ['vue', '视图'],
+    detail: 'console出来的数据与视图上的数据不一致,',
+    reason: `
+      this.$nextTick( () => {<br/>
+        &nbsp;&nbsp;&nbsp;// 赋值<br/>
+        &nbsp;&nbsp;&nbsp;// 使用<br/>
+      });<br/>
+      或<br/>
+      setTimeOUT(()=>,0)<br/>
+      或<br/>
+      this.$set(key,'value')<br/>`
+  },
+  {
     name: 'Navigating to current location (XXX) is not allowed',
     type: ['vue'],
     detail: '在vue cli3的项目中,接连两次访问了同一个路由地址(业务场景，切换用户,从后台重新获取菜单,再次重定向到导航界面，强制reload)',

@@ -3,7 +3,10 @@ let typeList = [
     'Git',
     'vuex',
     'localstorage',
-    'vue启动',
-    '数组'
+    'vue编译',
+    '数组',
+    'js',
+    'echarts',
+    'element'
 ]
 export default typeList

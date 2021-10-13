@@ -1,4 +1,11 @@
 <style lang="less" scoped>
+.titleClass{
+    width: 422px;
+    text-align: left;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
 .mianArea{
     width: calc(100vw - 260px);
     height: calc(100vh - 300px);
@@ -61,7 +68,10 @@
                     shadow="always" class="showBugsCard">
                     <el-card>
                         <el-collapse>
-                            <el-collapse-item :title="item.name">
+                            <el-collapse-item>
+                                <template slot="title">
+                                    <span class="titleClass" :title="item.name">{{item.name}}</span>
+                                </template>
                                 <el-button style="float: right" type="text" icon="el-icon-document-copy" @click="copyValue(item)"></el-button>
                                 <div v-if="item.detail">
                                     <div class="showBugsTitle">现象描述:</div>
