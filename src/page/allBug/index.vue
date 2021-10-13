@@ -1,7 +1,7 @@
 <style lang="less" scoped>
 .mianArea{
     width: calc(100vw - 260px);
-    height: calc(100vh - 50px);
+    height: calc(100vh - 300px);
     overflow-y: scroll;
 }
 .searchCard{
@@ -62,12 +62,13 @@
                     <el-card>
                         <el-collapse>
                             <el-collapse-item :title="item.name">
+                                <el-button style="float: right" type="text" icon="el-icon-document-copy" @click="copyValue(item)"></el-button>
                                 <div v-if="item.detail">
                                     <div class="showBugsTitle">现象描述:</div>
                                     <div class="showBugsValue" v-html="item.detail"></div>
                                 </div>
                                 <div>
-                                    <div class="showBugsTitle">导致原因:</div>
+                                    <div class="showBugsTitle">解决思路:</div>
                                     <div class="showBugsValue" v-html="item.reason"></div>
                                 </div>
                             </el-collapse-item>
@@ -95,8 +96,16 @@ export default {
         }
     },
     methods:{
+        copyValue (temp) {
+            let value = `${temp.name}\r\n\r\n现象描述:${temp.detail.replaceAll('<br/>','\r\n').replaceAll('&nbsp;','')}\r\n\r\n解决思路:${temp.reason.replaceAll('<br/>','').replaceAll('&nbsp;','')}`
+            let textarea = document.createElement("textarea")
+            // textarea.setAttribute("value", value);
+            textarea.value = value
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand("copy");
+        },
         handleSearch () {
-            console.log('执行筛选')
             let arr = this.bugInfo.filter(item => item.name.includes(this.searchKey) && (this.searchType?item.type.filter(item => item == this.searchType).length > 0:true))
             this.showBugs = deepCopy(arr)
         }
