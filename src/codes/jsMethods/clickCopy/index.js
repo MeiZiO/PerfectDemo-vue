@@ -22,6 +22,9 @@ export default {
         document.body.appendChild(input);
         input.select();
         document.execCommand("copy");
+        // 如果想使用换行符,则使用textarea,以下需要注意替换
+        //let textarea = document.createElement("textarea")
+        //textarea.value = value
     },
   }
 }
