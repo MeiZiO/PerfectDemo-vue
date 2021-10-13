@@ -1,4 +1,18 @@
 <style lang="less" scoped>
+.hiddenItem{
+    float: right;
+    position: relative;
+    background-color: #fab6b6;
+    color: #fff;
+    width: 44px;
+    height: 20px;
+    border-bottom-left-radius: 27px;
+    right: 44px;
+}
+.hiddenItem:hover{
+    background-color: #f56c6c!important;
+    box-shadow: 1px 4px 2px #fab6b6;
+}
 .titleClass{
     width: 422px;
     text-align: left;
@@ -41,6 +55,9 @@
     <div>
         <!-- <el-card class="searchCard"> -->
             <el-row :gutter="10">
+                <el-col :span="2">
+                    <el-button @click="handleSearch">取消隐藏</el-button>
+                </el-col>
                 <el-col :span="4">
                     <el-select v-model="searchType" clearable @change="handleSearch" filterable placeholder="可选类别">
                         <el-option 
@@ -66,6 +83,9 @@
                     v-for="(item, index) in showBugs"
                     :key="index"
                     shadow="always" class="showBugsCard">
+                    <div class="hiddenItem" type="danger" @click="hidden(item, index)">
+                        <i class="el-icon-close"></i>
+                    </div>
                     <el-card>
                         <el-collapse>
                             <el-collapse-item>
@@ -106,6 +126,10 @@ export default {
         }
     },
     methods:{
+        hidden (temp, index) {
+           temp.show = false
+           this.showBugs = this.showBugs.filter(item => item.show)
+        },
         copyValue (temp) {
             let value = `${temp.name}\r\n\r\n现象描述:${temp.detail.replaceAll('<br/>','\r\n').replaceAll('&nbsp;','')}\r\n\r\n解决思路:${temp.reason.replaceAll('<br/>','').replaceAll('&nbsp;','')}`
             let textarea = document.createElement("textarea")
@@ -116,7 +140,7 @@ export default {
             document.execCommand("copy");
         },
         handleSearch () {
-            let arr = this.bugInfo.filter(item => item.name.includes(this.searchKey) && (this.searchType?item.type.filter(item => item == this.searchType).length > 0:true))
+            let arr = this.bugInfo.filter(item => item.show && item.name.includes(this.searchKey) && (this.searchType?item.type.filter(item => item == this.searchType).length > 0:true))
             this.showBugs = deepCopy(arr)
         }
     },
