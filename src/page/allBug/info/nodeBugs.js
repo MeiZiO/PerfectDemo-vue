@@ -2,6 +2,7 @@ let data = [
   {
     name: '[Vue warn]: Failed to mount component: template or render function not defined',
     type: ['vue编译'],
+    show: true,
     detail: '编译报错 [Vue warn]: Failed to mount component: template or render function not defined',
     reason: `
         1,引入的路由的vue文件是否使用<template>包裹<br/>
@@ -12,6 +13,7 @@ let data = [
   {
     name: `Error: Cannot find module './_arrayMap'`,
     type: ['vue编译'],
+    show: true,
     detail: '下载依赖后,运行报错',
     reason: `
         1)下载的依赖存在问题<br/>

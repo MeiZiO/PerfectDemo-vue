@@ -3,6 +3,7 @@ let data = [
   {
     name: '视图数据与实际数据不一致',
     type: ['vue', '视图'],
+    show: true,
     detail: 'console出来的数据与视图上的数据不一致,',
     reason: `
       this.$nextTick( () => {<br/>
@@ -17,6 +18,7 @@ let data = [
   {
     name: 'Navigating to current location (XXX) is not allowed',
     type: ['vue'],
+    show: true,
     detail: '在vue cli3的项目中,接连两次访问了同一个路由地址(业务场景，切换用户,从后台重新获取菜单,再次重定向到导航界面，强制reload)',
     reason: `
     （在路由入口文件中使用以下代码）<br/>
@@ -29,6 +31,7 @@ let data = [
   {
     name: 'vue编译内存溢出javaScript heap out of memory',
     type: ['vue'],
+    show: true,
     detail: '编译项目时报错,内存溢出',
     reason: `
       1)下载依赖时,混合使用了npm/yarn => 删除使用一个命令重新下载依赖<br/>
