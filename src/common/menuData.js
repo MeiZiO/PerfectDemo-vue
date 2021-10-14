@@ -48,7 +48,7 @@ let menuData = [
     ]
   },
   {
-    name: '异常汇总',
+    name: '常见问题汇总',
     path: '/allBug',
     children: []
   }
