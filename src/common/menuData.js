@@ -18,6 +18,10 @@ let menuData = [
       {
         name: '点击复制',
         path: '/jsMethods/clickCopy',
+      },
+      {
+        name: '页面跳转',
+        path: '/jsMethods/redirect',
       }
     ]
   },
