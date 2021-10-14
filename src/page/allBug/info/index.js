@@ -1,11 +1,11 @@
 import viewBugs from './viewBugs'
 import nodeBugs from './nodeBugs'
-import framBugs from './framBugs'
+import frameBugs from './frameBugs'
 import jsBugs from './jsBugs'
 import elemntBugs from './elemntBugs'
 
 let bugInfo = [
-    ...framBugs,
+    ...frameBugs,
     ...viewBugs,
     ...nodeBugs,
     ...jsBugs,
