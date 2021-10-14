@@ -91,9 +91,9 @@
         </el-row>
       </el-col>
       <el-col :span="3" class="rightContain">
-        <el-row><el-button type="success" plain icon="el-icon-arrow-up"></el-button></el-row>
+        <!-- <el-row><el-button type="success" plain icon="el-icon-arrow-up"></el-button></el-row> -->
         <el-row><el-button type="success" round @click="showCode">查看源码</el-button></el-row>
-        <el-row><el-button type="success" plain icon="el-icon-arrow-down"></el-button></el-row>
+        <!-- <el-row><el-button type="success" plain icon="el-icon-arrow-down"></el-button></el-row> -->
       </el-col>
     </el-row>
     <el-drawer
