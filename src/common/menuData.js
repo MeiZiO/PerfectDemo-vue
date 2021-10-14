@@ -45,7 +45,7 @@ let menuData = [
   },
   {
     name: '问题汇总',
-    path: '/configuration',
+    path: '/problemAndTips',
     children: []
   },
   {
