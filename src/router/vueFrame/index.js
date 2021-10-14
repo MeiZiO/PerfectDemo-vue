@@ -6,5 +6,13 @@ export default [
         files: [],
         codes: []
       }
-    }
+    },
+    {
+      path: '/vueFrame/toHome',
+      component: () => import('../../page/vueFrame/toHome/index'),
+      meta: {
+        files: [],
+        codes: []
+      }
+    },
   ]
