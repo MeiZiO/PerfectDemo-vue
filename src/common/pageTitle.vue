@@ -1,13 +1,20 @@
 <style lang="scss" scoped>
+.markClass{
+  display: block;
+  height: 70px;
+  width: 100%;
+  padding: 0 30px 10px 10px;
+  overflow-y: scroll;
+}
 .pageTitle {
   margin: 4px;
   height: 100%;
   text-align: left;
   
   .leftContain {
-    .el-col:nth-child(1) {
+    .el-row:nth-child(1) {
       font-size: 18px;
-      padding-bottom: 10px;
+      padding-bottom: 0px;
       color: #EE5361;
       font-weight: bold;
 
@@ -16,8 +23,9 @@
         font-weight: normal;
       }
     }
-    .el-col:nth-child(2) {
+    .el-row:nth-child(2) {
       font-size: 14px;
+      color: #555555;
     }
   }
   .rightContain {
@@ -82,12 +90,10 @@
     <el-row>
       <el-col :span="21" class="leftContain">
         <el-row>
-          <el-col>
             {{name}} <span>[{{type}}]</span>
-          </el-col>
-          <el-col>
-            {{mark}}
-          </el-col>
+        </el-row>
+        <el-row>
+            <span class="markClass" v-html="mark"></span>
         </el-row>
       </el-col>
       <el-col :span="3" class="rightContain">
