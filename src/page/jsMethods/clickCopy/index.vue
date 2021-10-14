@@ -16,7 +16,7 @@ export default {
   methods: {
     copyValue () {
         let input = document.createElement("input")
-        input.setAttribute("value", '我是被被赋值的内容 复制时间:' + moment(new Date()).format('yyyy-MM-DD HH:mm:ss'));
+        input.setAttribute("value", '我是被被赋值的内容 赋值时间:' + moment(new Date()).format('yyyy-MM-DD HH:mm:ss'));
         input.style="display: none;"
         document.body.appendChild(input);
         input.select();
