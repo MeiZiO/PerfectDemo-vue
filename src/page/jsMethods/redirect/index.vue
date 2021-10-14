@@ -15,11 +15,11 @@ p{
     <span onclick="location='//www.csdn.net'">点击在当前页打开csdn</span>
     <div class="divideClass"></div>
     <span onclick="window.location.href='//www.csdn.net'">点击在当前页打开csdn</span>
-    <h1> 调用window的open方法</h1>
+    <h1> 2.调用window的open方法</h1>
     <span onclick="window.open('//www.csdn.net','_self')">点击在当前页打开csdn</span>
     <div class="divideClass"></div>
     <span onclick="window.open('//www.csdn.net','_blank')">点击在新标签页打开csdn</span>
-    <h1>二、a标签跳转</h1>
+    <h1>3.a标签跳转</h1>
     <!-- target属性默认为_self，此处可省略 -->
     <a href="//www.csdn.net" target="_self">点击在当前页打开csdn</a>
     <div class="divideClass"></div>
