@@ -35,6 +35,15 @@ let menuData = [
     ]
   },
   {
+    name: 'Vue相关',
+    children: [
+      {
+        name: '保留页码',
+        path: '/vueFrame/keepPage',
+      }
+    ]
+  },
+  {
     name: '异常汇总',
     path: '/allBug',
     children: []

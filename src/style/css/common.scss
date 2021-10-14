@@ -7,5 +7,15 @@
   overflow-y: scroll;
 }
 
+.showCard{
+  width: calc(100vw - 260px);
+  height: calc(100vh - 250px);
+  overflow-y: scroll;
+}
+.showTabs{
+  width: calc(100vw - 260px);
+  height: calc(100vh - 270px);
+  overflow-y: scroll;
+}
 // 不显示滚动条
 ::-webkit-scrollbar {display:none}
