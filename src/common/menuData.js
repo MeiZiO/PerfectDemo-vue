@@ -40,15 +40,16 @@ let menuData = [
       {
         name: '保留页码',
         path: '/vueFrame/keepPage',
-      },
-      {
-        name: '回到首页',
-        path: '/vueFrame/toHome',
       }
     ]
   },
   {
-    name: '常见问题汇总',
+    name: '问题汇总',
+    path: '/configuration',
+    children: []
+  },
+  {
+    name: '异常汇总',
     path: '/allBug',
     children: []
   }

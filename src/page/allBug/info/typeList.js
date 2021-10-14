@@ -7,7 +7,6 @@ let typeList = [
     '数组',
     'js',
     'echarts',
-    'element',
-    'webSocket'
+    'element'
 ]
 export default typeList

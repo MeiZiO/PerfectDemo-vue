@@ -5,6 +5,7 @@ import basicModule from '../basicModule/index.js'
 import jsMethods from '../jsMethods/index.js'
 import allBug from '../allBug/index.js'
 import vueFrame from '../vueFrame/index.js'
+import configuration from '../configuration/index.js'
 
 let routerArr = [
   {
@@ -16,6 +17,7 @@ let routerArr = [
       ...jsMethods,
       ...allBug,
       ...vueFrame,
+      ...configuration,
       {
         path: 'demo',
         meta: {
