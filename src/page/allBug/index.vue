@@ -94,7 +94,7 @@
                                 </template>
                                 <el-button style="float: right" type="text" icon="el-icon-document-copy" @click="copyValue(item)"></el-button>
                                 <div v-if="item.detail">
-                                    <div class="showBugsTitle">现象描述:</div>
+                                    <div class="showBugsTitle">具体描述:</div>
                                     <div class="showBugsValue" v-html="item.detail"></div>
                                 </div>
                                 <div>
@@ -131,10 +131,11 @@ export default {
            this.showBugs = this.showBugs.filter(item => item.show)
         },
         copyValue (temp) {
-            let value = `${temp.name}\r\n\r\n现象描述:${temp.detail.replaceAll('<br/>','\r\n').replaceAll('&nbsp;','')}\r\n\r\n解决思路:${temp.reason.replaceAll('<br/>','').replaceAll('&nbsp;','')}`
+            let value = `${temp.name}\r\n\r\n具体描述:${temp.detail.replaceAll('<br/>','\r\n').replaceAll('&nbsp;','')}\r\n\r\n解决思路:${temp.reason.replaceAll('<br/>','').replaceAll('&nbsp;','')}`
             let textarea = document.createElement("textarea")
             // textarea.setAttribute("value", value);
             textarea.value = value
+            textarea.style="display: none;"
             document.body.appendChild(textarea);
             textarea.select();
             document.execCommand("copy");
@@ -146,9 +147,9 @@ export default {
     },
     mounted() {
         this.showBugs = deepCopy(this.bugInfo)
-        this.$store.commit('SET_NAME', '异常汇总')
-        this.$store.commit('SET_TYPE', '异常')
-        this.$store.commit('SET_MARK', '展示开发过程中遇到的异常,标题支持模糊搜索')
+        this.$store.commit('SET_NAME', '常见问题汇总')
+        this.$store.commit('SET_TYPE', '问题汇总')
+        this.$store.commit('SET_MARK', '展示开发过程中遇到的异常与问题,标题支持模糊搜索')
     },
 }
 </script>
