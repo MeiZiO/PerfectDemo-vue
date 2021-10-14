@@ -13,6 +13,15 @@ let menuData = [
     ]
   },
   {
+    name: '功能组件',
+    children: [
+      {
+        name: '信息汇总',
+        path: '/functional/summaryInfo',
+      },
+    ]
+  },
+  {
     name: 'js简单功能',
     children: [
       {

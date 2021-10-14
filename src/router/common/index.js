@@ -6,6 +6,7 @@ import jsMethods from '../jsMethods/index.js'
 import allBug from '../allBug/index.js'
 import vueFrame from '../vueFrame/index.js'
 import problemAndTips from '../problemAndTips/index.js'
+import functional from '../functional/index.js'
 
 let routerArr = [
   {
@@ -18,6 +19,7 @@ let routerArr = [
       ...allBug,
       ...vueFrame,
       ...problemAndTips,
+      ...functional,
       {
         path: 'demo',
         meta: {
