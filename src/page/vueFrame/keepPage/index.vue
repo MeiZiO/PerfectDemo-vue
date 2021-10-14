@@ -86,20 +86,7 @@ export default {
         },
         onMounted2(editor) {
             this.editor2 = editor;
-        },
-        init () {
-            if (this.editor1 && this.editor2) {
-                this.editor1.setValue(JSON.stringify(this.code1))
-                this.editor1.trigger('','editor.action.format')
-                this.editor1.setValue(this.editor1.getValue())
-
-                this.editor2.setValue(JSON.stringify(this.code2))
-                this.editor2.trigger('','editor.action.format')
-                this.editor2.setValue(this.editor2.getValue())
-            }else{
-                setTimeout(() => {this.init()}, 300)
-            }
-        },
+        }
     },
     mounted () {
         this.$store.commit('SET_NAME', '保留页码')
