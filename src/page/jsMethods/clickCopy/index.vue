@@ -24,7 +24,7 @@ export default {
   },
   mounted () {
     this.$store.commit('SET_NAME', '点击复制')
-    this.$store.commit('SET_TYPE', 'js功能')
+    this.$store.commit('SET_TYPE', 'js')
     this.$store.commit('SET_MARK', '点击即可复制')
   }
 }
