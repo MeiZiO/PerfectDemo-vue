@@ -47,20 +47,25 @@ body, html {
     text-align: left;
     .el-menu-item {
       color:#7D7D7D;
+      background-color: #fde3eb!important;
     }
     .el-submenu__title {
       color:#7D7D7D;
     }
     .el-menu-item.is-active {
-      color: #9EC0E8;
+      // color: #ceecfa;
+      color: #000;
+      background-color: #ffc3d7!important;
     }
     .el-menu-item:hover {
-      color: #000;
-      background-color: #DDE8F7!important;
+      font-size: 16px;
+      color: #6f6f6f;
+      background-color: #ffcede!important;
     }
     .el-submenu__title:hover {
-      color: #000;
-      background-color: #DDE8F7!important;
+      font-size: 16px;
+      color: #6f6f6f;
+      background-color: #ffcede!important;
     }
   }
 }
@@ -69,7 +74,7 @@ body, html {
   <div class="home">
     <el-container>
       <el-header class="header_container">	
-        <el-menu default-active="1" background-color="#EBF8FE" mode="horizontal">
+        <el-menu default-active="1" background-color="#ceecfa" mode="horizontal">
           <el-submenu index="1" class="floatR">
             <template slot="title">版本</template>
             <el-menu-item index="2-1">v1.0</el-menu-item>
@@ -81,7 +86,7 @@ body, html {
         <div class="aside_container">
           <el-aside>
           <el-menu
-            background-color="#FFF9FB"
+            background-color="#ffeff6"
             class="el-menu-vertical-demo aside_menu"
             :default-active="$route.path"
             router>
