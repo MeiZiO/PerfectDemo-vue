@@ -7,4 +7,12 @@ export default [
       codes: ['/functional/summaryInfo/show.js', '/functional/summaryInfo/index.js', '/functional/summaryInfo/info.js']
     }
   },
+  {
+    path: '/functional/tableAction',
+    component: () => import('../../page/functional/tableAction/show.vue'),
+    meta: {
+      // files: ['展示.vue', '组件summaryInfo.vue', 'info.js'],
+      // codes: ['/functional/summaryInfo/show.js', '/functional/summaryInfo/index.js', '/functional/summaryInfo/info.js']
+    }
+  },
 ]

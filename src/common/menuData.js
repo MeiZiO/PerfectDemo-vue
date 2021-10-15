@@ -19,6 +19,10 @@ let menuData = [
         name: '信息汇总',
         path: '/functional/summaryInfo',
       },
+      {
+        name: '列表操作',
+        path: '/functional/tableAction',
+      },
     ]
   },
   {
